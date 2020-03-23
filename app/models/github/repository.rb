@@ -104,6 +104,7 @@ class Github::Repository < Tracker
       update_attributes(deleted_at: Time.now, sync_in_progress: false)
       issues.each do |issue|
         issue.update_attributes(deleted_at: Time.now)
+      end
       update_attributes!(sync_in_progress: false)
     end
   rescue Github::API::RateLimitExceeded
